@@ -1,6 +1,8 @@
 abstract interface class PathRepository {
 
-  Future<void> fetchPath(String url);
+  Future<void> saveUrl(String url);
 
-  Future<void> sendResult(String url);
+  Future<void> fetchPath();
+
+  Future<void> sendResult();
 }
