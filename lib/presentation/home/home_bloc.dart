@@ -2,7 +2,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/errors/app_exception.dart';
+import '../../core/errors/app_exception.dart';
 import '../../domain/usecases/save_url_use_case.dart';
 import 'home_event.dart';
 import 'home_state.dart';
