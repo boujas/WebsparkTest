@@ -21,7 +21,7 @@ class ResultListScreen extends StatelessWidget {
           final result = results[index];
           return ListTile(
             title: Text(result.label, textAlign: TextAlign.center),
-            onTap: () => context.router.push(PreviewRoute()),
+            onTap: () => context.router.push(PreviewRoute(result: result)),
           );
         },
       ),
