@@ -31,7 +31,7 @@ class _ProcessView extends StatelessWidget {
       listenWhen: (prev, curr) =>
       prev.status != curr.status && curr.status == ProcessStatus.sent,
       listener: (context, state) =>
-          context.router.push(ResultListRoute()),
+          context.router.push(ResultListRoute(results: state.results)),
       child: Scaffold(
         appBar: AppBar(title: const Text('Process screen')),
         body: SafeArea(
