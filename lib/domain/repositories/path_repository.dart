@@ -1,5 +1,7 @@
 import '../../core/result/result.dart';
+import '../entities/path_result.dart';
 import '../entities/path_task.dart';
+import '../entities/submission_result.dart';
 
 abstract interface class PathRepository {
 
@@ -7,5 +9,5 @@ abstract interface class PathRepository {
 
   Future<Result<List<PathTask>>> fetchTasks();
 
-  Future<void> sendResult();
+  Future<Result<List<SubmissionResult>>> sendResults(List<PathResult> results);
 }
