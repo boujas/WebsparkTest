@@ -17,7 +17,6 @@ dependencies:
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
   dio: ^5.8.0
-  shared_preferences: ^2.5.3
   collection: ^1.18.0
   bloc_concurrency: ^0.3.0
 

@@ -19,13 +19,13 @@ class PathRepositoryImpl implements PathRepository {
 
   final ApiClient _api;
 
-  String? _url;
+  String? _cachedUrl;
 
   @override
   Future<Result<List<PathTask>>> fetchTasks() async {
-    if (_url == null) return const Failure<List<PathTask>>(_urlNotSet);
+    if (_cachedUrl == null) return const Failure<List<PathTask>>(_urlNotSet);
 
-    return switch (await _api.get(_url!)) {
+    return switch (await _api.get(_cachedUrl!)) {
       Success(:final data) => Success(
         TasksResponseDto.fromJson(data).toDomain(),
       ),
@@ -37,11 +37,12 @@ class PathRepositoryImpl implements PathRepository {
   Future<Result<List<SubmissionResult>>> sendResults(
     List<PathResult> results,
   ) async {
-    if (_url == null) return const Failure<List<SubmissionResult>>(_urlNotSet);
+    if (_cachedUrl == null)
+      return const Failure<List<SubmissionResult>>(_urlNotSet);
 
     final body = results.map((r) => r.toDto().toJson()).toList();
     try {
-      return switch (await _api.post(_url!, body: body)) {
+      return switch (await _api.post(_cachedUrl!, body: body)) {
         Success(:final data) => Success(
           SubmitResponseDto.fromJson(data).toDomain(),
         ),
@@ -56,6 +57,6 @@ class PathRepositoryImpl implements PathRepository {
 
   @override
   Future<void> saveUrl(String url) async {
-    _url = url;
+    _cachedUrl = url;
   }
 }
